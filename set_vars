@@ -1,0 +1,27 @@
+# copyleft 2015 teodorescu.serban@gmail.com
+
+e=export
+
+$e PSPC_TERM=xterm
+
+# Dynamically retrieve the IP address of the `docker0` bridge network interface.
+DOCKER0_IP="$(ifconfig | grep -A 1 'docker0' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1)"
+
+# what ip address the db container is connected to - needed by api container
+$e DB_ADDR=$DOCKER0_IP
+# what port the db container is connected to - needed by api container
+$e DB_PORT=3306
+# what ip address the api container is connected to - this is the ip address you will access to use the api
+$e API_ADDR=127.0.0.1
+# what port the api container is connected to - this is the port you will access to use the api
+$e API_PORT=5000
+# what is the root folder to hold your database from db container and the files downloaded from api container
+$e BASE_VOL=.
+
+$e MYSQL_HOST=${DB_ADDR}
+$e MYSQL_PORT=${DB_PORT}
+$e MYSQL_ROOT_PASS=rootpass
+$e MYSQL_DB=bas
+$e MYSQL_USER=bas
+$e MYSQL_PASS=bas
+$e MYSQL_DIR=/srv/db

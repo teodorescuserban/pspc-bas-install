@@ -1,0 +1,7 @@
+# copyleft 2015 teodorescu.serban@gmail.com
+
+MYSQL_HOST=${MYSQL_HOST}
+MYSQL_PORT=${MYSQL_PORT}
+MYSQL_DB=${MYSQL_DB}
+MYSQL_USER=${MYSQL_USER}
+MYSQL_PASS=${MYSQL_PASS}
